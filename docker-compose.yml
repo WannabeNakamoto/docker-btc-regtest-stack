@@ -1,4 +1,4 @@
-version: '3'
+
 services:
   btc-regtest:
     container_name: btc-regtest

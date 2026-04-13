@@ -28,3 +28,25 @@ docker compose up
 ```
 
 Wait some minutes, after downloading container images and bulding the stack. Then, you should connect to your [mempool.space](http://localhost:1080) bitcoin regtest explorer at localhost port 1080 and enjoy it!
+
+
+
+Command executions outside of docker:
+#  Usage:
+#    docker compose up -d
+#    docker compose -f bitcoin-env.yaml exec bitcoind bitcoin-cli -regtest -rpcuser=admin -rpcpassword=admin createwallet "dev"
+#    docker compose -f bitcoin-env.yaml exec bitcoind bitcoin-cli -rpcwallet="dev" -regtest -rpcuser=admin -rpcpassword=admin getnewaddress
+#    docker compose -f bitcoin-env.yaml exec bitcoind bitcoin-cli -regtest -rpcuser=admin -rpcpassword=admin generatetoaddress 101 <address>
+# ------------- Check balance for specific address:
+#    docker compose -f bitcoin-env.yaml exec bitcoind bitcoin-cli -regtest -rpcuser=admin -rpcpassword=admin scantxoutset start '["addr(<ADDRESS>)"]'
+# If running on Windows machine, use \" \" because it has parsing issue: Error parsing JSON: [addr(<ADDR>)]
+# docker compose -f bitcoin-env.yaml exec bitcoind bitcoin-cli -regtest -rpcuser=admin -rpcpassword=admin scantxoutset start '[\"addr(<ADDRESS>)\"]'
+
+But there are helper scripts for powershell that can be used for command executions easily [Windows development infra.]
+
+
+
+
+Commands examples:
+.\mineblock.ps1 -Address bcrt1qure2064txdms6sdna3p60amq00knqqt6xwmpkx -Blocks 12 [mines 12 blocks to specified address]
+.\generateaddress.ps1 -Wallet Miner [Generates new address for wallet called miner. default value is also miner because it is created while container starts.]
