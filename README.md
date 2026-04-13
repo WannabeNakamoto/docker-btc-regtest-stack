@@ -50,3 +50,4 @@ But there are helper scripts for powershell that can be used for command executi
 Commands examples:
 .\mineblock.ps1 -Address bcrt1qure2064txdms6sdna3p60amq00knqqt6xwmpkx -Blocks 12 [mines 12 blocks to specified address]
 .\generateaddress.ps1 -Wallet Miner [Generates new address for wallet called miner. default value is also miner because it is created while container starts.]
+.\transfer.ps1 -FromWallet Miner -ToAddress bcrt1qure2064txdms6sdna3p60amq00knqqt6xwmpkx -Amount 1 [Transfers money from Wallet miner to address with specific amount]
